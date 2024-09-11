@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="dify.css">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+
+    <title>dify CRUD</title>
+</head>
+<body>
+     <!-- Side navigation -->
+     <div class="sidenav">
+        <a href="#">Alexendra Hospital (DIFY)</a>
+    </div>
+    
+    <!-- content -->
+    <div class="main pt-5">
+        <div class="bg-light border rounded">
+            <div class="row m-3">
+                <div class="row">
+                    <div class="col">
+                        <h2>Knowledge</h2>
+                    </div>
+                </div>
+            </div>
+            <div class="row m-3">
+                    <div class="col">
+                        <form class="form-inline justify-content-end" id="knowledgeForm">
+                            <div class="form-group">
+                                <input class="form-control " type="text" id="name" placeholder="Knowledge Name" required>
+                                <button class="btn btn-outline-primary mx-1" type="submit">Create Knowledge</button>
+                            </div>
+                          </form>
+                    </div>
+                </div>
+            <div class="row m-3">
+                    <button class="btn btn-secondary" id="fetchData">Display Knowledge</button>
+                    <button id="hideData">Hide Knowledge</button>
+            </div>
+            <div class="row m-3">
+                <table class="table">
+                    <thead class="thead-light">
+                      <tr>
+                        <th scope="col">Knowledge</th>
+                        <th scope="col"></th>
+                        <th scope="col"></th>
+                        <th scope="col"></th>
+                      </tr>
+                    </thead>
+                        <tbody id="data"></tbody>                    
+                    </table>                    
+                </div>
+            </div>
+        </div>
+  
+        <!-- Modal to show documents-->
+        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                </div>
+                <div class="modal-body">
+                    <table class="table">
+                        <thead class="thead-light">
+                          <tr>
+                            <th scope="col">Document</th>
+                          </tr>
+                        </thead>
+                            <tbody id="showDoc"></tbody>                    
+                        </table>  
+                </div>
+                <div class="modal-footer">
+                <button id="clear" type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+            </div>
+        </div>
+    </div>
+    <script src="difyApp.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    
+</body>
+</html>
