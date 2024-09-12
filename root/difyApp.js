@@ -74,7 +74,7 @@ function displayData(data) {
             viewButton.id = 'viewDoc';
             viewButton.addEventListener('click', function(event) {
                 event.preventDefault();
-                fetchKnowledgeDocumentList(item.id);
+                fetchKnowledgeDocumentList(item.id,item.name);
                 modalFunc()
                 
             });
@@ -133,7 +133,7 @@ function displayData(data) {
     hideButton.style.display = 'inline-block';
 }
 
-function fetchKnowledgeDocumentList(id){
+function fetchKnowledgeDocumentList(id, name){
     
     const apiUrl = 'http://13.212.220.128/v1/datasets';
     fetch(`${apiUrl}/${id}/documents`, {
@@ -152,7 +152,7 @@ function fetchKnowledgeDocumentList(id){
     })
     .then(data => {
         pData = data.data;
-        displayKnoDocData(pData);
+        displayKnoDocData(pData, name);
     })
     .catch(error => {
         console.error('There was a problem with the fetch operation:', error);
@@ -160,8 +160,10 @@ function fetchKnowledgeDocumentList(id){
     });
 }
 
-function displayKnoDocData(data) {
+function displayKnoDocData(data, name) {
     const modal = document.getElementById('showDoc');
+    const modalLabel = document.getElementById('ModalLabel');
+    modalLabel.innerHTML = `${name}`;
     data.forEach(doc => {
         const docRow = document.createElement('tr');
         docRow.id = 'documents';
@@ -178,13 +180,16 @@ function clearDoc(){
         const clearDocuments = document.getElementById('documents');
         if (clearDocuments && clearDocuments.parentNode){
             clearDocuments.parentNode.removeChild(clearDocuments);
+            const modalLabel = document.getElementById('ModalLabel');
+            modalLabel.innerHTML = ``;
+
         }
     });
 
 }
 
 function modalFunc(){
-    $("#exampleModal").modal('toggle')
+    $("#docModal").modal('toggle')
 }
 
 function hideData() {
